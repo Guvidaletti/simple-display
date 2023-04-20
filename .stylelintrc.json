@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "overrides": [
+    {
+      "files": ["**/*.scss"]
+    }
+  ],
+  "rules": {
+    "color-hex-length": "long",
+    "scss/double-slash-comment-empty-line-before": null
+  }
+}
