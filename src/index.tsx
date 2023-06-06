@@ -1,5 +1,4 @@
-import Col from './components/Col/col';
-import Container from './components/Container/container';
-import Row from './components/Row/Row';
+import Button from './components/Button/button';
+import Input from './components/Input/input';
 
-export { Container, Row, Col };
+export { Button, Input };
