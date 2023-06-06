@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.tsx',
       fileName: 'index',
-      name: 'react-lib',
+      name: 'simple-display',
       formats: ['es', 'umd'],
     },
     rollupOptions: {
@@ -24,5 +24,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  resolve: {
+    alias: [{ find: '@', replacement: '/src' }],
   },
 });
