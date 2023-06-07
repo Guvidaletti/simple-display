@@ -25,6 +25,6 @@ jobs:
     - run: npm run build --if-present
     - run: echo 'Buildou'
     - run: node -v
-    - run: npm --no-git-tag-version version $CI_COMMIT_TAG
+    - run: npm --no-git-tag-version version $GITHUB_REF_NAME
     - run: npm config set //registry.npmjs.org/:_authToken $PUBLISH_TOKEN
     - run: npm publish
