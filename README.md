@@ -39,8 +39,11 @@ and you're ready to go! 🚀🚀🚀
 <br />
 <br />
 
-## 🔎 Key Features
+## Live demo
 
+A live demo can be accessed [here](http://Guvidaletti.github.io/simple-display)
+
+## 🔎 Key Features
 
 - Easy-to-use components for layout control.
 - Responsive design with predefined media queries.
