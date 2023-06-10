@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [
     dts({
       insertTypesEntry: true,
+      noEmitOnError: true,
     }),
   ],
   build: {
