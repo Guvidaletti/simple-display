@@ -7,9 +7,11 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       noEmitOnError: true,
+      outputDir: ['dist', 'storybook-static'],
     }),
   ],
   build: {
+    outDir: 'dist',
     lib: {
       entry: 'src/index.tsx',
       fileName: 'index',
