@@ -9,7 +9,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "repository": "github:Guvidaletti/simple-display",
-  "homepage": "http://Guvidaletti.github.io/simple-display",
+  "homepage": "https://Guvidaletti.github.io/simple-display",
   "author": "Gustavo Lodi Vidaletti <gustavo.vidaletti@gmail.com>",
   "exports": {
     ".": {
