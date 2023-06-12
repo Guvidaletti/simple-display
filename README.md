@@ -39,9 +39,15 @@ and you're ready to go! 🚀🚀🚀
 <br />
 <br />
 
-## Live demo
+## 🛠️ Demos
+Check out the following demos to see Simple-Display in action:
 
-A live demo can be accessed [here](http://Guvidaletti.github.io/simple-display)
+**Documentation**: Explore the interactive components and usage examples in our [Storybook Documentation](http://Guvidaletti.github.io/simple-display).
+
+**Live Demo**: Experience a live demonstration of Simple-Display in this [CodeSandbox environment](https://codesandbox.io/p/sandbox/fancy-night-lgl2fc?file=%2Fsrc%2Fcomponents%2Fitem%2Fitem.css%3A12%2C1).
+
+<br />
+<br />
 
 ## 🔎 Key Features
 
