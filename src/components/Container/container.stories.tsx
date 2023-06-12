@@ -20,7 +20,7 @@ export const Example = (args: Partial<ContainerProps<'div'>>) => {
       insiderProps={{ style: { backgroundColor: '#dddddd' } }}
     >
       <Row>
-        <Col gap={2} padding={2}>
+        <Col gap={2}>
           <input type='text' name='inp' />
           <button type='submit'>Teste aqui</button>
         </Col>
@@ -31,4 +31,5 @@ export const Example = (args: Partial<ContainerProps<'div'>>) => {
 
 Example.args = {
   fluid: false,
+  padding: 1,
 } as Partial<ContainerProps<'div'>>;

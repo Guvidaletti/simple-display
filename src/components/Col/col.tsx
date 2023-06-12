@@ -1,5 +1,8 @@
 import { createElement, HTMLAttributes, ReactHTML, useMemo } from 'react';
-import { getMergedClassNames } from '../../utils/html';
+import {
+  getMergedClassNames,
+  getValueBySpacingVariable,
+} from '../../utils/html';
 import classes from './col.module.scss';
 
 type size = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
@@ -32,31 +35,15 @@ export default function Col<Tag extends keyof ReactHTML>({
   fullfill,
   ...props
 }: ColProps<Tag>) {
-  const calculatedGap = useMemo(() => {
-    if (typeof gap === 'number') {
-      const p = parseInt(
-        window
-          .getComputedStyle(document.documentElement)
-          .getPropertyValue('--spacing') ?? '8'
-      );
-      return `${gap * p}px`;
-    }
+  const calculatedGap = useMemo(
+    () => getValueBySpacingVariable(gap, '--spacing'),
+    [gap]
+  );
 
-    return gap;
-  }, [gap]);
-
-  const calculatedPadding = useMemo(() => {
-    if (typeof padding === 'number') {
-      const p = parseInt(
-        window
-          .getComputedStyle(document.documentElement)
-          .getPropertyValue('--spacing') ?? '8'
-      );
-      return `${padding * p}px`;
-    }
-
-    return padding;
-  }, [padding]);
+  const calculatedPadding = useMemo(
+    () => getValueBySpacingVariable(padding, '--spacing'),
+    [padding]
+  );
 
   return createElement(
     tag ?? 'div',

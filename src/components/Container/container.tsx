@@ -1,5 +1,8 @@
-import { createElement, HTMLAttributes, ReactHTML } from 'react';
-import { getMergedClassNames } from '../../utils/html';
+import { createElement, HTMLAttributes, ReactHTML, useMemo } from 'react';
+import {
+  getMergedClassNames,
+  getValueBySpacingVariable,
+} from '../../utils/html';
 import classes from './container.module.scss';
 
 export interface ContainerProps<Tag extends keyof ReactHTML>
@@ -7,6 +10,7 @@ export interface ContainerProps<Tag extends keyof ReactHTML>
   fluid?: boolean;
   tag?: Tag;
   insiderProps?: HTMLAttributes<HTMLDivElement>;
+  padding?: number | string;
 }
 
 export default function Container<Tag extends keyof ReactHTML>({
@@ -14,8 +18,14 @@ export default function Container<Tag extends keyof ReactHTML>({
   fluid,
   className,
   insiderProps,
+  padding,
   ...props
 }: ContainerProps<Tag>) {
+  const calculatedPadding = useMemo(
+    () => getValueBySpacingVariable(padding, '--container-spacing'),
+    [padding]
+  );
+
   return createElement(
     tag ?? 'div',
     {
@@ -30,6 +40,10 @@ export default function Container<Tag extends keyof ReactHTML>({
         fluid && classes.fluid,
         insiderProps?.className ?? ''
       )}
+      style={{
+        padding: calculatedPadding,
+        ...(insiderProps?.style ?? {}),
+      }}
     >
       {props.children}
     </div>

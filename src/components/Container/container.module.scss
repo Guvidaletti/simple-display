@@ -1,3 +1,7 @@
+:root {
+  --container-spacing: 8px;
+}
+
 .wrapper {
   box-sizing: border-box;
   display: flex;
@@ -7,6 +11,7 @@
   height: 100%;
 
   .container {
+    padding: var(--container-spacing);
     box-sizing: border-box;
     display: flex;
     flex-flow: column wrap;
