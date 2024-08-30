@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Row from './row2';
+import Row from './row';
 
 describe('Row', () => {
   it('should work normaly', () => {

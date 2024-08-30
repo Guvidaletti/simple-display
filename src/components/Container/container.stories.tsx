@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Col from '../Col/col';
-import Row from '../Row/row2';
+import Row from '../Row/row';
 import Container from './container';
 
 const meta: Meta<typeof Container> = {
