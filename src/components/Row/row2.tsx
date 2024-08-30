@@ -1,5 +1,5 @@
 import { createElement, HTMLAttributes, ReactHTML } from 'react';
-import { getMergedClassNames } from '../../utils/html';
+import { useMergedClassNames } from '../../utils/html';
 import classes from './row.module.scss';
 
 export interface RowProps<Tag extends keyof ReactHTML>
@@ -15,15 +15,17 @@ export default function Row<Tag extends keyof ReactHTML>({
   centralized,
   ...props
 }: RowProps<Tag>) {
+  const classNames = useMergedClassNames(
+    className,
+    classes.row,
+    centralized && classes.centralized
+  );
+
   return createElement(
     tag ?? 'div',
     {
       ...props,
-      className: getMergedClassNames(
-        className,
-        classes.row,
-        centralized && classes.centralized
-      ),
+      className: classNames,
     },
     children
   );

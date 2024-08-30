@@ -1,15 +1,23 @@
-import { createElement, HTMLAttributes, ReactHTML, useMemo } from 'react';
 import {
-  getMergedClassNames,
+  createElement,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactHTML,
+  useMemo,
+} from 'react';
+import {
   getValueBySpacingVariable,
+  useMergedClassNames,
 } from '../../utils/html';
 import classes from './container.module.scss';
-
 export interface ContainerProps<Tag extends keyof ReactHTML>
-  extends HTMLAttributes<Tag> {
+  extends DetailedHTMLProps<HTMLAttributes<Tag>, Tag> {
   fluid?: boolean;
   tag?: Tag;
-  insiderProps?: HTMLAttributes<HTMLDivElement>;
+  insiderProps?: DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > & { 'data-testid'?: string };
   padding?: number | string;
 }
 
@@ -26,6 +34,13 @@ export default function Container<Tag extends keyof ReactHTML>({
     [padding]
   );
 
+  const classNames = useMergedClassNames(
+    className,
+    classes.container,
+    fluid && classes.fluid,
+    insiderProps?.className ?? ''
+  );
+
   return createElement(
     tag ?? 'div',
     {
@@ -34,12 +49,7 @@ export default function Container<Tag extends keyof ReactHTML>({
     },
     <div
       {...insiderProps}
-      className={getMergedClassNames(
-        className,
-        classes.container,
-        fluid && classes.fluid,
-        insiderProps?.className ?? ''
-      )}
+      className={classNames}
       style={{
         padding: calculatedPadding,
         ...(insiderProps?.style ?? {}),

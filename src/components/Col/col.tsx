@@ -1,7 +1,7 @@
 import { createElement, HTMLAttributes, ReactHTML, useMemo } from 'react';
 import {
-  getMergedClassNames,
   getValueBySpacingVariable,
+  useMergedClassNames,
 } from '../../utils/html';
 import classes from './col.module.scss';
 
@@ -45,20 +45,22 @@ export default function Col<Tag extends keyof ReactHTML>({
     [padding]
   );
 
+  const classNames = useMergedClassNames(
+    className,
+    classes.col,
+    xs && classes[`col-xs-${xs}`],
+    sm && classes[`col-sm-${sm}`],
+    md && classes[`col-md-${md}`],
+    lg && classes[`col-lg-${lg}`],
+    xl && classes[`col-xl-${xl}`],
+    fullfill && classes.fullfill
+  );
+
   return createElement(
     tag ?? 'div',
     {
       ...props,
-      className: getMergedClassNames(
-        className,
-        classes.col,
-        xs && classes[`col-xs-${xs}`],
-        sm && classes[`col-sm-${sm}`],
-        md && classes[`col-md-${md}`],
-        lg && classes[`col-lg-${lg}`],
-        xl && classes[`col-xl-${xl}`],
-        fullfill && classes.fullfill
-      ),
+      className: classNames,
       style: {
         gap: calculatedGap,
         padding: calculatedPadding,

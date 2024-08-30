@@ -1,35 +1,39 @@
+import { Meta, StoryObj } from '@storybook/react';
 import Col from '../Col/col';
-import Row from '../Row/Row';
-import Container, { ContainerProps } from './container';
+import Row from '../Row/row2';
+import Container from './container';
 
-export default {
+const meta: Meta<typeof Container> = {
   title: 'Display/Container',
+  component: Container,
 };
 
-export const Example = (args: Partial<ContainerProps<'div'>>) => {
-  return (
-    <Container
-      {...args}
-      tag='form'
-      onSubmit={(e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target as HTMLFormElement);
-        alert(fd.get('inp'));
-      }}
-      style={{ backgroundColor: '#cdcdcd' }}
-      insiderProps={{ style: { backgroundColor: '#dddddd' } }}
-    >
-      <Row>
-        <Col gap={2}>
-          <input type='text' name='inp' />
-          <button type='submit'>Teste aqui</button>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+export default meta;
 
-Example.args = {
-  fluid: false,
-  padding: 1,
-} as Partial<ContainerProps<'div'>>;
+type Story = StoryObj<typeof Container>;
+
+export const Example: Story = {
+  args: { fluid: false, padding: 1 },
+  render: function Render(args) {
+    return (
+      <Container
+        {...args}
+        tag='form'
+        onSubmit={(e) => {
+          e.preventDefault();
+          const fd = new FormData(e.target as HTMLFormElement);
+          alert(fd.get('inp'));
+        }}
+        style={{ backgroundColor: '#cdcdcd' }}
+        insiderProps={{ style: { backgroundColor: '#dddddd' } }}
+      >
+        <Row>
+          <Col gap={2}>
+            <input type='text' name='inp' />
+            <button type='submit'>Teste aqui</button>
+          </Col>
+        </Row>
+      </Container>
+    );
+  },
+};
